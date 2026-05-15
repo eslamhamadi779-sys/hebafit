@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صحتك بالدنيا ✨ | مع كابتن هبه</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+ 
+body {
+    font-family: 'Cairo', sans-serif;
+    background: #0a0a23;
+    color: #fff;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+ 
+/* ── خلفية كونية ── */
+.cosmic-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    overflow: hidden;
+}
+.stars-layer { position:absolute; width:100%; height:100%; }
+.star {
+    position:absolute; background:#fff; border-radius:50%;
+    animation: twinkle 3s infinite alternate;
+}
+@keyframes twinkle {
+    0%,100% { opacity:.4; transform:scale(1); }
+    50%      { opacity:1;  transform:scale(1.2); }
+}
+ 
+/* ── عجلة ── */
+.zodiac-wheel-container {
+    position:absolute; top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    width:300px; height:300px; z-index:1;
+}
+.zodiac-wheel {
+    position:relative; width:100%; height:100%;
+}
+.wheel-inner { position:relative; width:100%; height:100%; }
+.wheel-symbol {
+    position:absolute; width:40px; height:40px;
+    top:50%; left:50%; font-size:22px;
+    display:flex; align-items:center; justify-content:center;
+    transform:
+        translate(-50%,-50%)
+        rotate(calc(var(--i) * 30deg))
+        translateY(-120px);
+    animation: counterSpin 20s linear infinite;
+}
+@keyframes wheelSpin  { to { transform:rotate(360deg); } }
+@keyframes counterSpin {
+    from { transform: translate(-50%,-50%) rotate(calc(var(--i)*30deg)) translateY(-120px) rotate(0deg); }
+    to   { transform: translate(-50%,-50%) rotate(calc(var(--i)*30deg)) translateY(-120px) rotate(-360deg); }
+}
+.wheel-rings {
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+}
+.ring {
+    position:absolute; border-radius:50%;
+    border:2px solid rgba(255,105,180,0.3);
+}
+.ring-1 { width:80%; height:80%; }
+.ring-2 { width:60%; height:60%; border-color:rgba(78,205,196,0.3); }
+.ring-3 { width:40%; height:40%; border-color:rgba(138,43,226,0.3); }
+ 
+/* ── سحب ── */
+.nebula {
+    position:absolute; border-radius:50%;
+    filter:blur(80px); opacity:.25;
+    animation: floatNebula 12s ease-in-out infinite;
+}
+.nebula-1 { width:300px; height:300px; background:#ff69b4; top:10%;  left:10%;  }
+.nebula-2 { width:250px; height:250px; background:#4ecdc4; bottom:15%; right:15%; animation-delay:-4s; }
+.nebula-3 { width:200px; height:200px; background:#8a2be2; top:50%;  right:30%; animation-delay:-8s; }
+@keyframes floatNebula {
+    0%,100% { transform:translate(0,0); }
+    50%      { transform:translate(20px,-20px); }
+}
+ 
+/* ── Navbar ── */
+.navbar {
+    position:fixed; top:20px; right:20px;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(20px);
+    padding:15px 25px; border-radius:50px;
+    z-index:100; display:flex; gap:20px; align-items:center;
+    border:1px solid rgba(255,255,255,0.2);
+    transition:all .3s;
+}
+.logo { font-weight:700; font-size:18px; color:#ff69b4; }
+.nav-links { display:flex; gap:20px; }
+.nav-links a { color:#fff; text-decoration:none; font-weight:500; transition:color .3s; }
+.nav-links a:hover { color:#ff69b4; }
+ 
+/* ── Sidebar ── */
+.sidebar { position:fixed; top:100px; left:20px; z-index:100; }
+.profile-avatar { position:relative; width:70px; height:70px; }
+.profile-avatar img {
+    width:100%; height:100%; border-radius:50%; object-fit:cover;
+    border:3px solid rgba(255,105,180,0.5);
+}
+.online-status {
+    position:absolute; bottom:5px; right:5px;
+    width:15px; height:15px; background:#00ff88;
+    border-radius:50%; border:2px solid #0a0a23;
+    animation:pulse 2s infinite;
+}
+@keyframes pulse {
+    0%   { box-shadow:0 0 0 0   rgba(0,255,136,.7); }
+    70%  { box-shadow:0 0 0 10px rgba(0,255,136,0);  }
+    100% { box-shadow:0 0 0 0   rgba(0,255,136,0);   }
+}
+ 
+/* ── Header ── */
+header {
+    min-height:100vh; display:flex;
+    align-items:center; justify-content:center;
+    text-align:center; padding:0 20px;
+    position:relative; z-index:10;
+}
+.header-content { max-width:800px; }
+.header-icon { font-size:4rem; animation:bounce 2s infinite; margin-bottom:20px; }
+@keyframes bounce {
+    0%,20%,50%,80%,100% { transform:translateY(0); }
+    40% { transform:translateY(-20px); }
+    60% { transform:translateY(-10px); }
+}
+.header-content h1 {
+    font-size:clamp(2.5rem,8vw,5rem); margin:20px 0;
+    background:linear-gradient(45deg,#ff69b4,#4ecdc4,#45b7d1);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    background-clip:text;
+    animation:glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow {
+    from { filter:drop-shadow(0 0 10px rgba(255,105,180,.5)); }
+    to   { filter:drop-shadow(0 0 20px rgba(255,105,180,.8)); }
+}
+.header-content p { font-size:1.5rem; opacity:.9; }
+ 
+/* ── Sections ── */
+section {
+    padding:80px 20px; max-width:1200px;
+    margin:0 auto; text-align:center;
+    position:relative; z-index:10;
+}
+section h1, section h2 {
+    font-size:clamp(2rem,5vw,3.5rem); margin-bottom:30px;
+    background:linear-gradient(45deg,#fff,#ff69b4);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    background-clip:text;
+}
+section p {
+    font-size:1.2rem; max-width:800px;
+    margin:0 auto 30px; opacity:.9; line-height:1.8;
+}
+ 
+/* ── Cards ── */
+.programs-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px; margin-top:50px;
+}
+.program-card {
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(20px);
+    padding:40px 20px; border-radius:25px;
+    font-size:1.4rem; font-weight:700;
+    border:1px solid rgba(255,255,255,0.2);
+    transition:all .3s; cursor:pointer;
+    position:relative; overflow:hidden;
+}
+.program-card::before {
+    content:''; position:absolute;
+    top:0; left:-100%; width:100%; height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
+    transition:left .5s;
+}
+.program-card:hover::before { left:100%; }
+.program-card:hover {
+    transform:translateY(-15px) scale(1.05);
+    background:rgba(255,105,180,0.2);
+    box-shadow:0 20px 40px rgba(255,105,180,.3);
+}
+ 
+/* ── Contact ── */
+.whatsapp-btn {
+    display:inline-block; margin-top:20px;
+    padding:15px 40px;
+    background:linear-gradient(135deg,#25d366,#128c7e);
+    color:#fff; border-radius:50px;
+    text-decoration:none; font-weight:700;
+    font-size:1.1rem; transition:all .3s;
+    box-shadow:0 8px 25px rgba(37,211,102,.4);
+}
+.whatsapp-btn:hover {
+    transform:translateY(-3px);
+    box-shadow:0 12px 35px rgba(37,211,102,.5);
+}
+ 
+/* ── Footer ── */
+footer {
+    background:rgba(0,0,0,.5); padding:40px 20px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.1);
+}
+.footer-sub { margin-top:10px; opacity:.8; font-size:.9rem; }
+ 
+/* ── Animations entrance ── */
+.fade-in {
+    opacity:0; transform:translateY(40px);
+    transition:all .8s cubic-bezier(.25,.46,.45,.94);
+}
+.fade-in.visible { opacity:1; transform:translateY(0); }
+ 
+/* ── Cursor ── */
+.cursor {
+    position:fixed; width:20px; height:20px;
+    background:rgba(255,105,180,.6); border-radius:50%;
+    pointer-events:none; z-index:9999;
+    transition:left .05s, top .05s;
+}
+ 
+/* ── Notification ── */
+.notification {
+    position:fixed; top:100px; right:20px;
+    background:rgba(255,105,180,.95); color:#fff;
+    padding:15px 25px; border-radius:25px; font-weight:600;
+    box-shadow:0 10px 30px rgba(255,105,180,.4);
+    transform:translateX(400px); transition:all .4s;
+    z-index:1000;
+}
+.notification.show { transform:translateX(0); }
+ 
+/* ── Responsive ── */
+@media(max-width:768px){
+    .navbar { flex-direction:column; gap:10px; padding:15px; top:10px; right:10px; }
+    .sidebar { display:none; }
+    .zodiac-wheel-container { width:200px; height:200px; }
+    .wheel-symbol { font-size:16px; }
+}
+@media(max-width:480px){
+    .header-content h1 { font-size:2rem; }
+    .header-content p  { font-size:1.1rem; }
+}
+ 
+@keyframes pulseRing {
+    0%   { transform:scale(0); opacity:1; }
+    100% { transform:scale(2); opacity:0; }
+}
+</style>
+</head>
+<body>
+ 
+<!-- خلفية -->
+<div class="cosmic-bg">
+    <div class="stars-layer" id="starsLayer"></div>
+    <div class="zodiac-wheel-container">
+        <div class="zodiac-wheel" id="zodiacWheel">
+            <div class="wheel-inner">
+                <div class="wheel-symbol" style="--i:0">🏃‍♀️</div>
+                <div class="wheel-symbol" style="--i:1">💪</div>
+                <div class="wheel-symbol" style="--i:2">🧘‍♀️</div>
+                <div class="wheel-symbol" style="--i:3">🥗</div>
+                <div class="wheel-symbol" style="--i:4">💅</div>
+                <div class="wheel-symbol" style="--i:5">👯‍♀️</div>
+                <div class="wheel-symbol" style="--i:6">🔥</div>
+                <div class="wheel-symbol" style="--i:7">🏃‍♂️</div>
+                <div class="wheel-symbol" style="--i:8">✌️</div>
+                <div class="wheel-symbol" style="--i:9">💥</div>
+                <div class="wheel-symbol" style="--i:10">🚴‍♀️</div>
+                <div class="wheel-symbol" style="--i:11">❤️‍🔥</div>
+            </div>
+            <div class="wheel-rings">
+                <div class="ring ring-1"></div>
+                <div class="ring ring-2"></div>
+                <div class="ring ring-3"></div>
+            </div>
+        </div>
+    </div>
+    <div class="nebula nebula-1"></div>
+    <div class="nebula nebula-2"></div>
+    <div class="nebula nebula-3"></div>
+</div>
+ 
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="logo"><i class="fas fa-heart"></i> Heba Fit 💅💃❤️‍🔥</div>
+    <div class="nav-links">
+        <a href="#home">الرئيسية</a>
+        <a href="#about">من نحن</a>
+        <a href="#programs">البرامج</a>
+        <a href="#contact">اتصل بنا</a>
+    </div>
+</nav>
+ 
+<!-- Sidebar -->
+<aside class="sidebar">
+    <div class="mini-profile">
+        <div class="profile-avatar">
+            <img src="https://placehold.co/80x80/ff69b4/ffffff?text=HF" alt="profile">
+            <div class="online-status"></div>
+        </div>
+    </div>
+</aside>
+ 
+<!-- Header -->
+<header id="home">
+    <div class="header-content fade-in">
+        <div class="header-icon">✨</div>
+        <h1>حياتك الأفضل تبدأ الآن</h1>
+        <p>أنتِ قد التحدي — هتخسي من غير ما تحسي 💖</p>
+    </div>
+</header>
+ 
+<!-- Intro -->
+<section class="intro fade-in">
+    <h1>صحتك هي سر سعادتك</h1>
+    <p>الصحة الجسدية والنفسية مش بس رياضة أو تنظيم أكل... دي أسلوب حياة كامل يخلي طاقتك أفضل وتركيزك أعلى وثقتك بنفسك أقوى.</p>
+</section>
+ 
+<!-- About -->
+<section id="about" class="fade-in">
+    <h2>🧑‍🩰👯‍♀️🏃‍♂️💃 من نحن</h2>
+    <p>كابتن هبه عصام مدربة معتمدة في الفيتنس واليوجا والأنظمة الغذائية الصحية. خبرة أكتر من 10 سنين في مساعدة الناس توصل لأهدافها الصحية بطريقة صح وممتعة.</p>
+</section>
+ 
+<!-- Programs -->
+<section id="programs" class="fade-in">
+    <h2>برامجنا</h2>
+    <div class="programs-grid">
+        <div class="program-card">🥗<br>نظام غذائي</div>
+        <div class="program-card">🧘‍♀️<br>يوجا</div>
+        <div class="program-card">💪<br>تمارين صباحية</div>
+        <div class="program-card">🔥<br>حرق دهون</div>
+    </div>
+</section>
+ 
+<!-- Contact -->
+<section id="contact" class="fade-in">
+    <h2>اتصل بنا</h2>
+    <p>للتواصل والاستفسار عن البرامج الغذائية والرياضية</p>
+    <a href="https://wa.me/201XXXXXXXXX" target="_blank" class="whatsapp-btn">
+        💬 تواصل على واتساب
+    </a>
+</section>
+ 
+<!-- Footer -->
+<footer>
+    <p>© 2026 جميع الحقوق محفوظة | إسلام الهاشمي</p>
+    <p class="footer-sub">✨ موقع صحتك بالدنيا | مع كابتن هبه عصام 🌟</p>
+</footer>
+ 
+<script>
+// ── نجوم ──
+function createStars() {
+    const layer = document.getElementById('starsLayer');
+    if (!layer) return;
+    for (let i = 0; i < 120; i++) {
+        const s = document.createElement('div');
+        s.classList.add('star');
+        const size = Math.random() * 3 + 0.5;
+        s.style.cssText = `
+            width:${size}px; height:${size}px;
+            top:${Math.random()*100}%; left:${Math.random()*100}%;
+            animation-duration:${2+Math.random()*4}s;
+            animation-delay:${Math.random()*5}s;
+            opacity:${0.4+Math.random()*0.6};
+        `;
+        layer.appendChild(s);
+    }
+}
+ 
+// ── عجلة ──
+function initWheelRotation() {
+    const wheel = document.getElementById('zodiacWheel');
+    if (!wheel) return;
+    let r = 0;
+    setInterval(() => {
+        r += 0.3;
+        wheel.style.transform = `rotate(${r}deg)`;
+    }, 30);
+}
+ 
+// ── navbar scroll ──
+function initScrollEffects() {
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('.navbar');
+        if (!nav) return;
+        if (window.pageYOffset > 100) {
+            nav.style.background = 'rgba(255,255,255,0.25)';
+            nav.style.boxShadow  = '0 8px 32px rgba(255,105,180,0.3)';
+        } else {
+            nav.style.background = 'rgba(255,255,255,0.1)';
+            nav.style.boxShadow  = 'none';
+        }
+    });
+}
+ 
+// ── fade-in ──
+function initAnimations() {
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+}
+ 
+// ── cards ──
+function initCards() {
+    document.querySelectorAll('.program-card').forEach(card => {
+        card.addEventListener('click', function() {
+            showNotification(`${this.innerText.split('\n')[1]} — تم الاختيار! 💪`);
+        });
+    });
+}
+ 
+// ── notification ──
+function showNotification(msg) {
+    const n = document.createElement('div');
+    n.className = 'notification';
+    n.textContent = msg;
+    document.body.appendChild(n);
+    requestAnimationFrame(() => n.classList.add('show'));
+    setTimeout(() => {
+        n.classList.remove('show');
+        setTimeout(() => n.remove(), 400);
+    }, 3000);
+}
+ 
+// ── cursor ──
+function initCursor() {
+    const cursor = document.createElement('div');
+    cursor.className = 'cursor';
+    document.body.appendChild(cursor);
+    document.addEventListener('mousemove', e => {
+        cursor.style.left = e.clientX - 10 + 'px';
+        cursor.style.top  = e.clientY - 10 + 'px';
+    });
+}
+ 
+// ── parallax ──
+function initParallax() {
+    const nebulae = document.querySelectorAll('.nebula');
+    window.addEventListener('mousemove', e => {
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+        nebulae.forEach((n, i) => {
+            const speed = 0.1 + i * 0.05;
+            n.style.transform = `translate(${x*50*speed}px,${y*50*speed}px)`;
+        });
+    });
+}
+ 
+// ── typing ──
+function initTyping() {
+    const p = document.querySelector('.header-content p');
+    if (!p) return;
+    const text = p.textContent;
+    p.textContent = '';
+    let i = 0;
+    function type() {
+        if (i < text.length) { p.textContent += text[i++]; setTimeout(type, 60); }
+    }
+    setTimeout(type, 1200);
+}
+ 
+// ── تشغيل الكل ──
+document.addEventListener('DOMContentLoaded', () => {
+    createStars();
+    initWheelRotation();
+    initScrollEffects();
+    initAnimations();
+    initCards();
+    initCursor();
+    initParallax();
+    initTyping();
+});
+</script>
+</body>
+</html>
