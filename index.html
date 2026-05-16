@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
+
  
 body {
     font-family: 'Cairo', sans-serif;
@@ -257,6 +258,80 @@ footer {
     0%   { transform:scale(0); opacity:1; }
     100% { transform:scale(2); opacity:0; }
 }
+
+/* ── حساب الوزن المثالي── */
+body{
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Cairo', sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;  /* ده اللي بيجيبها في النص عمودياً */
+    align-items: center;      /* ده بيجيبها في النص أفقياً */
+    min-height: 100vh;        /* خليها min-height مش height */
+    margin: 0;
+    padding: 20px;            /* خلي البادينج أقل عشان متبعدش عن النص */
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+/* ── حساب الوزن المثالي── */
+
+
+
+.calculator{
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 35px;
+    border-radius: 25px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+input{
+    width: 100%;
+    padding: 14px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+button{
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #ff69b4, #ff8ec7);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover{
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(255,105,180,0.4);
+}
+
+#result{
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
 </style>
 </head>
 <body>
@@ -328,6 +403,13 @@ footer {
     <p>الصحة الجسدية والنفسية مش بس رياضة أو تنظيم أكل... دي أسلوب حياة كامل يخلي طاقتك أفضل وتركيزك أعلى وثقتك بنفسك أقوى.</p>
 </section>
  
+ 
+
+ 
+ 
+ 
+ 
+ 
 <!-- About -->
 <section id="about" class="fade-in">
     <h2>🧑‍🩰👯‍♀️🏃‍♂️💃 من نحن</h2>
@@ -344,6 +426,19 @@ footer {
         <div class="program-card">🔥<br>حرق دهون</div>
     </div>
 </section>
+ 
+ 
+ //--حساب الوزن المثالي --//
+ <section>
+   <div class="calculator">
+    <h1>حاسبة الوزن المثالي 💪</h1>
+    <input type="number" id="weight" placeholder="اكتب وزنك بالكيلو">
+    <input type="number" id="height" placeholder="اكتب طولك بالسم">
+    <button id="calcBtn">احسب</button>
+    <div id="result"></div>
+  </div>
+ </section>
+ 
  
 <!-- Contact -->
 <section id="contact" class="fade-in">
@@ -484,6 +579,45 @@ document.addEventListener('DOMContentLoaded', () => {
     initParallax();
     initTyping();
 });
+
+// ── حساب الوزن المثالي  ──
+
+const weightInput = document.getElementById("weight");
+const heightInput = document.getElementById("height");
+const button = document.getElementById("calcBtn");
+const result = document.getElementById("result");
+
+button.addEventListener("click", function(){
+    const weight = Number(weightInput.value);
+    const height = Number(heightInput.value);
+
+    if(!weight || !height){
+        result.innerHTML = "من فضلك اكتبي الوزن والطول 📝";
+        result.style.background = "#ff4757";
+        return;
+    }
+
+    const idealWeight = height - 100;
+    const difference = weight - idealWeight;
+
+    if(difference > 0){
+        result.innerHTML = `تحتاجي تخسي ${difference} كيلو 🏃‍♀️`;
+        result.style.background = "#ff4757"; // أحمر خفيف
+    }
+    else if(difference < 0){
+        result.innerHTML = `تحتاجي تزيدي ${Math.abs(difference)} كيلو 💪`;
+        result.style.background = "#ffa502"; // برتقاني
+    }
+    else{
+        result.innerHTML = `وزنك مثالي ✨🔥`;
+        result.style.background = "#2ed573"; // أخضر
+    }
+});
+
+
+
+
+
 </script>
 </body>
 </html>
