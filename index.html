@@ -259,6 +259,41 @@ footer {
     100% { transform:scale(2); opacity:0; }
 }
 
+/* ── مواقع التواصل الاجتماعي── */
+.social-links {
+    margin-top: 60px;
+    text-align: center;
+    width: 100%;
+}
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.links a {
+    padding: 12px 20px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 12px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 16px;
+    font-family: 'Cairo', sans-serif;
+}
+
+.links a:hover {
+    background: #ff69b4;
+    transform: translateY(-5px);
+}
+
+
+
+
+
 /* ── حساب الوزن المثالي── */
 body{
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -440,6 +475,21 @@ button:hover{
  </section>
  
  
+  <section>
+  <!-- سوشيال ميديا -->
+<div class="social-links">
+    <h2>تابعي كابتن هبه</h2>
+    <div class="links">
+        <a href="" id="instagramLink" target="_blank">📷 انستجرام</a>
+        <a href="" id="facebookLink" target="_blank">📘 فيسبوك</a>
+        <a href="" id="telegramLink" target="_blank">✈️ تيليجرام</a>
+        <a href="" id="tiktok1Link" target="_blank">🎵 تيك توك 1</a>
+        <a href="" id="tiktok2Link" target="_blank">🎵 تيك توك 2</a>
+        <a href="" id="emailLink">📧 تواصلي معايا</a>
+    </div>
+</div>
+  </section>
+    
 <!-- Contact -->
 <section id="contact" class="fade-in">
     <h2>اتصل بنا</h2>
@@ -613,6 +663,18 @@ button.addEventListener("click", function(){
         result.style.background = "#2ed573"; // أخضر
     }
 });
+
+// ── مواقع التواصل الاجتماعي─//──
+// روابط السوشيال ميديا
+document.getElementById("instagramLink").href = "https://www.instagram.com/heba.fitness22?igsh=Mzh0djczMnJ1M2wy";
+document.getElementById("facebookLink").href = "https://www.facebook.com/share/17QGGPb8pQ/";
+document.getElementById("telegramLink").href = "https://t.me/heba.fitness22";
+document.getElementById("tiktok1Link").href = "https://www.tiktok.com/@heba.fitness22?_r=1&_t=ZS-96OpXLvhcft";
+document.getElementById("tiktok2Link").href = "https://www.tiktok.com/@heba.fitness2?_r=1&_t=ZS-96OpZF7mVwy";
+document.getElementById("emailLink").href = "mailto:Hebayoga7@gmail.com";
+
+
+
 
 
 
