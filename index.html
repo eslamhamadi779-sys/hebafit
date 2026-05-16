@@ -291,6 +291,35 @@ footer {
 }
 
 
+/* ──  االنظام الغذائي── */
+.yoga-card {
+    background: rgba(255,255,255,0.15);
+    padding: 15px;
+    margin: 15px auto;
+    border-radius: 12px;
+    max-width: 500px;
+    text-align: right;
+}
+
+.yoga-card h3 {
+    margin: 0 0 8px 0;
+    color: #ffecb3;
+}
+
+section {
+    margin-top: 60px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+section p {
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 15px auto;
+}
+
+
 
 
 
@@ -377,18 +406,18 @@ button:hover{
     <div class="zodiac-wheel-container">
         <div class="zodiac-wheel" id="zodiacWheel">
             <div class="wheel-inner">
-                <div class="wheel-symbol" style="--i:0">🏃‍♀️</div>
-                <div class="wheel-symbol" style="--i:1">💪</div>
-                <div class="wheel-symbol" style="--i:2">🧘‍♀️</div>
-                <div class="wheel-symbol" style="--i:3">🥗</div>
-                <div class="wheel-symbol" style="--i:4">💅</div>
-                <div class="wheel-symbol" style="--i:5">👯‍♀️</div>
-                <div class="wheel-symbol" style="--i:6">🔥</div>
-                <div class="wheel-symbol" style="--i:7">🏃‍♂️</div>
-                <div class="wheel-symbol" style="--i:8">✌️</div>
-                <div class="wheel-symbol" style="--i:9">💥</div>
-                <div class="wheel-symbol" style="--i:10">🚴‍♀️</div>
-                <div class="wheel-symbol" style="--i:11">❤️‍🔥</div>
+                <div class="wheel-symbol" style="--i:0">🏃‍♀️🏃‍♀️</div>
+                <div class="wheel-symbol" style="--i:1">💪💪</div>
+                <div class="wheel-symbol" style="--i:2">🧘‍♀️🧘‍♀️</div>
+                <div class="wheel-symbol" style="--i:3">🥗🥗</div>
+                <div class="wheel-symbol" style="--i:4">💅💅</div>
+                <div class="wheel-symbol" style="--i:5">👯‍♀️👯‍♀️</div>
+                <div class="wheel-symbol" style="--i:6">🔥🔥</div>
+                <div class="wheel-symbol" style="--i:7">🏃‍♂️🏃‍♂️</div>
+                <div class="wheel-symbol" style="--i:8">✌✌️</div>
+                <div class="wheel-symbol" style="--i:9">💥💥</div>
+                <div class="wheel-symbol" style="--i:10">🚴‍♀️🚴‍♀️</div>
+                <div class="wheel-symbol" style="--i:11">❤️‍‍🔥</div>
             </div>
             <div class="wheel-rings">
                 <div class="ring ring-1"></div>
@@ -438,16 +467,100 @@ button:hover{
     <p>الصحة الجسدية والنفسية مش بس رياضة أو تنظيم أكل... دي أسلوب حياة كامل يخلي طاقتك أفضل وتركيزك أعلى وثقتك بنفسك أقوى.</p>
 </section>
  
- 
+ <!-- ## -->
+ <!-- الدات الثابته -->
 
+
+<script>
+const hebaData = {
+    
+    //** نظام غذائي **//
+    diet: "نظام غذائي متوازن يعتمد على البروتين الخالي من الدهون، الكربوهيدرات المعقدة زي الشوفان والبطاطا، والدهون الصحية زي المكسرات وزيت الزيتون. اشربي 2-3 لتر مية يومياً، وقللي السكر والدقيق الأبيض عشان تحرقي دهون أسرع.",
+
+    //** يوجا **//
+    yoga: "اليوجا مش مجرد تمارين، دي توازن بين الجسم والعقل. بتزود المرونة، تقوي العضلات، وتقلل التوتر. الانتظام 3 مرات في الأسبوع هيفرق معاكي جداً في المزاج والنوم.",
+
+    //** أقسام اليوجا **//
+    yogaSections: [
+        {name: "تنفس", desc: "تمارين تنفس عميق بتقلل التوتر وتزود الأكسجين في الجسم"},
+        {name: "تأمل", desc: "تهدئة العقل والتخلص من الأفكار السلبية في 10 دقايق يومياً"},
+        {name: "مرونة", desc: "تمارين إطالة بتزيد مرونة العمود الفقري والمفاصل"},
+        {name: "آلام أسفل الظهر", desc: "وضعيات يوجا مخصصة لتخفيف الضغط على أسفل الظهر وتقوية عضلاته"}
+    ],
+
+    //** تمارين صباحية **//
+    morningWorkout: "5 دقايق تمارين خفيفة أول ما تصحي: دوران الذراعين، إمالة الجذع، وقرفصاء خفيفة. بتنشط الدورة الدموية وتصحي جسمك قبل اليوم.",
+
+    //** حرق دهون **//
+    fatBurn: "عشان تحرقي دهون صح، لازم تدمجي كارديو خفيف زي المشي السريع مع تمارين مقاومة. أهم حاجة الاستمرارية + عجز سعرات بسيط 300-500 سعر يومياً."
+}
+</script>
+ 
+ <!-- ## -->
+ 
+ <!-- نظام غذائي -->
+
+<section id="dietSection">
+    <h2>نظام غذائي</h2>
+    <p id="dietText"></p>
+</section>
+
+ <!--يوجا->
+
+<section id="yogaSection">
+    <h2>يوجا</h2>
+    <p id="yogaText"></p>
+</section>
+
+ <!--ام اليوجا->
+
+<section id="yogaSections">
+    <h2>أقسام اليوجا</h2>
+    <div id="yogaList"></div>
+</section>
+
+ <!--تمارين صباحية->
+ 
+<section id="morningSection">
+    <h2>تمارين صباحية</h2>
+    <p id="morningText"></p>
+</section>
+
+<!--حرق دهون->
+
+<section id="fatBurnSection">
+    <h2>حرق دهون</h2>
+    <p id="fatBurnText"></p>
+</section>
+
+<!-تشغيل الداتا->
+
+<script>
+document.getElementById("dietText").innerText = hebaData.diet;
+document.getElementById("yogaText").innerText = hebaData.yoga;
+document.getElementById("morningText").innerText = hebaData.morningWorkout;
+document.getElementById("fatBurnText").innerText = hebaData.fatBurn;
+
+// أقسام اليوجا - لوب يعمل كروت
+const yogaList = document.getElementById("yogaList");
+hebaData.yogaSections.forEach(item => {
+    yogaList.innerHTML += `
+        <div class="yoga-card">
+            <h3>🧘 ${item.name}</h3>
+            <p>${item.desc}</p>
+        </div>
+    `;
+});
+</script>
  
  
  
  
+<!-- ## -->
  
 <!-- About -->
 <section id="about" class="fade-in">
-    <h2>🧑‍🩰👯‍♀️🏃‍♂️💃 من نحن</h2>
+    <h2>🩰👯‍♀️🏃‍♂️💃 من نحن</h2>
     <p>كابتن هبه عصام مدربة معتمدة في الفيتنس واليوجا والأنظمة الغذائية الصحية. خبرة أكتر من 10 سنين في مساعدة الناس توصل لأهدافها الصحية بطريقة صح وممتعة.</p>
 </section>
  
@@ -462,8 +575,8 @@ button:hover{
     </div>
 </section>
  
- 
- //--حساب الوزن المثالي --//
+  <!-- حساب الوزن المثالي -->
+
  <section>
    <div class="calculator">
     <h1>حاسبة الوزن المثالي 💪</h1>
