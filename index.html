@@ -7,6 +7,99 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
+
+
+/* Telegram AI Bot */
+
+.bot-box{
+
+max-width:650px;
+
+margin:auto;
+
+padding:35px;
+
+border-radius:25px;
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.15);
+
+transition:.4s;
+
+}
+
+.bot-box:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 20px 40px rgba(255,105,180,.35);
+
+}
+
+.bot-icon{
+
+font-size:70px;
+
+margin-bottom:20px;
+
+animation:botFloat 3s ease-in-out infinite;
+
+}
+
+.telegram-ai-btn{
+
+display:inline-block;
+
+margin-top:25px;
+
+padding:16px 40px;
+
+border-radius:50px;
+
+background:linear-gradient(135deg,#229ED9,#0088cc);
+
+text-decoration:none;
+
+font-size:20px;
+
+font-weight:bold;
+
+color:#fff;
+
+transition:.3s;
+
+}
+
+.telegram-ai-btn:hover{
+
+transform:scale(1.08);
+
+box-shadow:0 0 25px rgba(34,158,217,.6);
+
+}
+
+@keyframes botFloat{
+
+0%,100%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+}
+
+
+
+
 * { margin:0; padding:0; box-sizing:border-box; }
 
  
@@ -467,6 +560,69 @@ button:hover{
     <p>الصحة الجسدية والنفسية مش بس رياضة أو تنظيم أكل... دي أسلوب حياة كامل يخلي طاقتك أفضل وتركيزك أعلى وثقتك بنفسك أقوى.</p>
 </section>
  
+
+<!-- Telegram AI Bot -->
+
+<section id="telegramBot" class="fade-in">
+
+    <h2>🤖 مساعد هبة فيتنس الذكي</h2>
+
+    <p>
+        تحدث مع بوت Heba Fitness على تيليجرام واحصل على إجابات فورية حول
+        التغذية، التمارين، خسارة الوزن، بناء العضلات، السعرات الحرارية،
+        واليوجا باستخدام الذكاء الاصطناعي.
+    </p>
+
+    <div class="bot-box">
+
+        <div class="bot-icon">
+            🤖
+        </div>
+
+        <h3>Zomorda AI</h3>
+
+        <p>
+
+            ✔️ أنظمة غذائية
+
+            <br>
+
+            ✔️ برامج تدريب
+
+            <br>
+
+            ✔️ حساب السعرات
+
+            <br>
+
+            ✔️ حساب BMI
+
+            <br>
+
+            ✔️ الذكاء الاصطناعي
+
+            <br>
+
+            ✔️ متاح 24 ساعة
+
+        </p>
+
+        <a
+        href="https://t.me/Zomorda_fit_bot"
+        target="_blank"
+        class="telegram-ai-btn">
+
+        🚀 افتح البوت الآن
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+
  <!-- ## -->
  <!-- الدات الثابته -->
 
@@ -496,6 +652,24 @@ const hebaData = {
 }
 </script>
  
+
+// Telegram Bot Animation
+
+const botCard=document.querySelector(".bot-box");
+
+if(botCard){
+
+botCard.addEventListener("mouseenter",()=>{
+
+showNotification("🤖 مرحباً بك في مساعد هبة فيتنس الذكي");
+
+});
+
+}
+
+
+
+
  <!-- ## -->
  
  <!-- نظام غذائي -->
@@ -615,7 +789,7 @@ hebaData.yogaSections.forEach(item => {
 <!-- Footer -->
 <footer>
     <p>© 2026 جميع الحقوق محفوظة | إسلام الهاشمي</p>
-    <p class="footer-sub">✨ موقع صحتك بالدنيا | مع كابتن هبه عصام 🌟</p>
+    <p class="footer-sub">✨ موقع صحتك بالدنيا | مع كابتن هبه فيتنيس 🌟</p>
 </footer>
  
 <script>
@@ -785,10 +959,6 @@ document.getElementById("telegramLink").href = "https://t.me/heba.fitness22";
 document.getElementById("tiktok1Link").href = "https://www.tiktok.com/@heba.fitness22?_r=1&_t=ZS-96OpXLvhcft";
 document.getElementById("tiktok2Link").href = "https://www.tiktok.com/@heba.fitness2?_r=1&_t=ZS-96OpZF7mVwy";
 document.getElementById("emailLink").href = "mailto:Hebayoga7@gmail.com";
-
-
-
-
 
 
 
